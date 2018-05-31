@@ -1,0 +1,62 @@
+﻿<Window x:Class="PIWorks_Assignment.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PIWorks_Assignment.Views"
+        xmlns:localVMs="clr-namespace:PIWorks_Assignment.ViewModels"
+        xmlns:localModels="clr-namespace:PIWorks_Assignment.Models"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:md="https://github.com/fantasticfiasco/mvvm-dialogs"
+        mc:Ignorable="d"
+        Title="{Binding Title}" Height="250" Width="400"
+        WindowState="Normal"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+        <!-- Insert here your Data Templates -->
+        <DataTemplate x:Key="SampleTemplate">
+            <StackPanel/>
+        </DataTemplate>
+        
+    </Window.Resources>
+    <Window.InputBindings>
+        <!-- Example of Keyboard shortcuts -->
+        <KeyBinding Command="{Binding SaveCmd}" Key="S" Modifiers="Ctrl" />
+        <KeyBinding Command="{Binding SaveAsCmd}" Gesture="Ctrl+Shift+S" />
+        <KeyBinding Command="{Binding OpenCmd}" Gesture="Ctrl+O" />
+        <KeyBinding Command="{Binding NewCmd}" Gesture="Ctrl+N" />
+        <KeyBinding Command="{Binding ExitCmd}" Gesture="Alt+F4" />
+    </Window.InputBindings>
+
+    <DockPanel>
+        <!-- File Menu -->
+        <StackPanel>
+            <DockPanel Margin="10">
+                <WrapPanel HorizontalAlignment="Right" DockPanel.Dock="Right" Margin="0,0,0,0">
+                    <Button Name="btnOpenFile" Width="100" Height="30" Click="btnOpenFile_Click">Open file</Button>
+                </WrapPanel>
+                    <TextBox Name="txtEditor" IsReadOnly="True"/>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <StackPanel Margin="10,0,0,0">
+                    <Button Name="btnUploadFile" Click="btnUploadFile_Click" IsEnabled="False">Upload file</Button>
+                    <Button Name="btnFindMaxiumumSum" Click="btnFindMaxiumumSum_Click"  IsEnabled="False" Margin="0,5,0,0"  >Find Max Sum</Button>
+                </StackPanel>
+            </DockPanel>
+            <DockPanel Margin="10">
+                <StackPanel Margin="10,0,0,0">
+                    <Label Name="lblMaximumSum" Background="AliceBlue" Margin="0,0,0,0" Width="230">Max Sum : 0</Label>
+                </StackPanel>
+            </DockPanel>
+            <!--<DockPanel>
+                <StackPanel Margin="10,0,0,0">
+                    <TextBox Name="txtPrimeCheck" Background="AliceBlue" Margin="0,0,0,10" Height="40"></TextBox>
+                    <Button Name="btnPrimeCheck" Click="btnPrimeCheck_Click"  Height="40">PrimeCheck</Button>
+                    <Label Name="lblPrimeCheck" Background="AliceBlue" Margin="0,10,0,0" >Max Sum : 0</Label>
+                </StackPanel>
+            </DockPanel>-->
+        </StackPanel>
+    </DockPanel>
+</Window>
