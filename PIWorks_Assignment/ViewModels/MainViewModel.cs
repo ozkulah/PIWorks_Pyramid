@@ -58,9 +58,12 @@ namespace PIWorks_Assignment.ViewModels
                 string[] splitedLine = line.Split('\t',' ');
                 for (int i = 0; i < splitedLine.Count(); i++)
                 {
-                    int.TryParse(splitedLine[i], out int value);
-                    //Create a Pyramid object and check value is a prime or not
-                    lstPyramid.Add(new Pyramid(localDepth, value, IsPrimeNumber(value)));
+                    if (splitedLine[i] != "")//Split method can return extra empty strings
+                    {
+                        int.TryParse(splitedLine[i], out int value);
+                        //Create a Pyramid object and check value is a prime or not
+                        lstPyramid.Add(new Pyramid(localDepth, value, IsPrimeNumber(value)));
+                    }
                 }
                 localDepth++;
             }
@@ -68,6 +71,7 @@ namespace PIWorks_Assignment.ViewModels
             file.Close();
 
             depthOfPyramid = localDepth; //Find the depth of pyramid
+
         }
 
         public bool IsPrimeNumber(int number)
